@@ -3,10 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Function in Js</title>
+    <title>Don-don ziki</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>Hello world</h1>
-    <script src="./main.js"></script>
+    <header class="header">
+      <div class="header__container">
+        <img src="./img/logo.svg" alt="Logo" />
+        <div class="header__score score">
+          <div class="score__inner">
+            <strong class="score__title">Score</strong>
+            <span class="score__text">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game zone -->
+    <section class="game-zone" id="gameZone">
+      <div class="game-zone__container">
+        <button class="game-zone__button js-hand">
+          <img class="game-zone__img" src="./img/paper.svg" alt="paper" />
+        </button>
+        <button class="game-zone__button js-hand">
+          <img class="game-zone__img" src="./img/scissors.svg" alt="scissors" />
+        </button>
+        <button class="game-zone__button js-hand">
+          <img class="game-zone__img" src="./img/rock.svg" alt="rock" />
+        </button>
+      </div>
+    </section>
+
+    <!-- Who is win?? (game-result) -->
+    <section class="game-result" id="gameResult">
+      <div class="game-result__container">
+        <div class="game-result-part part">
+          <h2 class="part-title">You Picked</h2>
+          <img class="part-img" id="humanHand" src="./img/rock.svg" alt="" />
+        </div>
+        <div id="status" class="game-result-status status">
+          <h2 class="status-title">You win</h2>
+          <button class="status-button" id="refreshGame">Refresh</button>
+        </div>
+        <div class="game-result-part part">
+          <h2 class="part-title">AI Picked</h2>
+          <img class="part-img" id="aiHand" src="./img/oval.svg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+      <div class="modal__container">
+        <div class="modal-top">
+          <h2 class="modal-title">Rules</h2>
+          <button class="modal-btn" id="closeModalBtn">
+            <img src="./img/x.svg" alt="" />
+          </button>
+        </div>
+        <img class="modal-img" src="./img/rules.svg" alt="" />
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <button class="openModal" id="openModalBtn">Rules</button>
+
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
