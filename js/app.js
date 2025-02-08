@@ -1,4 +1,5 @@
 import { aiChoser } from "./ai-choser.js";
+import { checkWinner } from "./check-winner.js";
 import {
   hands,
   refreshGame,
@@ -13,6 +14,7 @@ import {
 import { closeModal, openModal } from "./modal.js";
 import { initialState } from "./settings.js";
 import { uiChanger } from "./ui-changer.js";
+import { uiChangerByWinner } from "./ui-changerby-winner.js";
 
 // Hands Linstener
 hands.forEach((hand) => {
@@ -26,7 +28,8 @@ hands.forEach((hand) => {
 
     setTimeout(() => {
       aiHand.src = `img/${chosenHandAi}.svg`;
-      status.style.opacity = "1";
+      const currentAction = checkWinner(chosenHand.alt, chosenHandAi);
+      uiChangerByWinner(currentAction);
     }, 1000);
 
     uiChanger("gameZone");
@@ -37,6 +40,9 @@ hands.forEach((hand) => {
 refreshGame.addEventListener("click", function () {
   uiChanger("gameResult");
   aiHand.src = "img/oval.svg";
+  aiHand.classList.remove("win-shadow");
+  humanHand.classList.remove("win-shadow");
+  status.style.opacity = "0";
 });
 
 openModalBtn.addEventListener("click", openModal);
